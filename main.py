@@ -23,3 +23,9 @@ class Cafe(db.Model):
     has_sockets = db.Column(db.Boolean, nullable=False)
     can_take_calls = db.Column(db.Boolean, nullable=False)
     coffee_price = db.Column(db.String(250), nullable=True)
+
+
+@app.route("/")
+def home():
+    return render_template("index.html")
+    
