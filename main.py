@@ -12,7 +12,7 @@ Bootstrap(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///cafes.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
-
+# db.create_all()
 
 ##Cafe TABLE Configuration
 class Cafe(db.Model):
@@ -35,7 +35,22 @@ def home():
 
 @app.route('/cafes')
 def cafes():
-    return render_template('cafes.html')
+    cafes_list=[]
+    all_cafes = db.session.query(Cafe).all()
+    # for cafe in all_cafes:
+    #     cafes_list.append({"id":cafe.id,
+    #     "name":cafe.name,
+    #     "map_url":cafe.map_url,
+    #     "img_url":cafe.img_url,
+    #     "location":cafe.location,
+    #     "seats":cafe.seats,
+    #     "has_toilet":cafe.has_toilet,
+    #     "has_wifi":cafe.has_wifi,
+    #     "has_sockets":cafe.has_sockets,
+    #     "can_take_calls":cafe.can_take_calls,
+    #     "coffee_price":cafe.coffee_price,
+    # })
+    return render_template('cafes.html',cafes = all_cafes)
     
 if __name__=='__main__':
    app.run(debug=True)   

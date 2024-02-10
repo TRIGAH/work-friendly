@@ -20,17 +20,17 @@
         <tbody>
           {% for cafe in cafes %}
           <tr>
-            <td>{{ cafe[0] }}</td>
-            {% if 'http' in cafe[1] %}
-            <td><a href="{{ cafe[1] }}">Maps Link</a></td>
+            <td>{{ cafe.id }}</td>
+            {% if 'http' in cafe.map_url %}
+            <td><a href="{{ cafe.map_url }}">Link</a></td>
             {% else %}
-            <td>{{ cafe[1] }}</td>
+            <td>{{ cafe.name }}</td>
             {% endif %}
-            <td>{{ cafe[2] }}</td>
-            <td>{{ cafe[3] }}</td>
-            <td>{{ cafe[4] }}</td>
-            <td>{{ cafe[5] }}</td>
-            <td>{{ cafe[6] }}</td>
+            <td>{{ cafe.location }}</td>
+            <td>{{ cafe.seats }}</td>
+            <td>{{ cafe.has_toilet }}</td>
+            <td>{{ cafe.has_wifi }}</td>
+            <td>{{ cafe.has_sockets }}</td>
           </tr>
           {% endfor %}
         </tbody>
